@@ -7,10 +7,10 @@ interface ListProps<T> {
 
 export default function ItemList({ items, renderItem }: ListProps<T>) {
   return (
-    <ul>
+    <div className="container list-item">
       {items.map((item, i) => (
         <li key={i}>{renderItem(item)}</li>
       ))}
-    </ul>
+    </div>
   );
 }

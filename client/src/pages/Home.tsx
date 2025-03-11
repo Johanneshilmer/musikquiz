@@ -21,8 +21,11 @@ const renderOptions = (option: Options) => {
 
 export default function Home() {
   return (
-    <div>
-      <h1>Home page!!</h1>
+    <div className="container">
+      <div className="container main-header">
+        <h1>Music Quiz</h1>
+      </div>
+
       <ItemList items={options} renderItem={renderOptions} />
     </div>
   );
