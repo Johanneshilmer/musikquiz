@@ -25,16 +25,25 @@
 .Item-Lists {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: green;
+  gap:20px;
 }
 
 .Item-List {
   height: 200px;
-  width: 250px;
+  width: 100%;
   display: flex; 
-  border: blue 1px solid;
   justify-content: center;
   align-items: center;
+  border-radius: 100px;
+  transition: 0.1s;
+}
+
+.Item-List:hover {
+  background: rgb(36, 36, 36);
+}
+
+.Item-List span {
+  font-size: 3rem;
 }
 
 /*------------------------------MEDIA-------------------------------------*/
