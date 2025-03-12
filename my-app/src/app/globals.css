@@ -1,0 +1,81 @@
+:root {
+  background: #0a0a0a;
+  color: #ededed;
+}
+
+.container {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  border: red 1px solid;
+}
+
+/*------------------------------HEADER-------------------------------------*/
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+/*------------------------------ItemList-------------------------------------*/
+.Item-Lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: green;
+}
+
+.Item-List {
+  height: 200px;
+  width: 250px;
+  display: flex; 
+  border: blue 1px solid;
+  justify-content: center;
+  align-items: center;
+}
+
+/*------------------------------MEDIA-------------------------------------*/
+/* 2xl */
+@media (max-width: 1536px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* xl */
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* lg */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+/* md */
+@media (max-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+/* sm */
+@media (max-width: 640px) {
+  .container {
+    max-width: 475px;
+  }
+}
+
+/* xs */
+@media (max-width: 475px) {
+  .container {
+    max-width: 100%;
+  }
+}
