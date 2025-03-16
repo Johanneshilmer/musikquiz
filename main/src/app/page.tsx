@@ -1,6 +1,25 @@
-export default async function Home() {
-  const response = await fetch("/api/fetch");
-  const data = await response.json();
+"use client";
+import { useEffect, useState } from "react";
+
+interface Data {
+  name: string;
+}
+
+export default function Home() {
+  const [data, setData] = useState<Data | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/fetch");
+      const data = await response.json();
+      setData(data);
+    }
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <div className="container main-header">
