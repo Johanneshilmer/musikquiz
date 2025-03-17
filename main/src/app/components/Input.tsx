@@ -1,6 +1,6 @@
 import React from "react";
 interface InputProps {
-  handleSubmit: () => void;
+  handleSubmit: (e: React.FormEvent) => void;
   newPost: string;
   setNewPost: (newPost: string) => void;
 }

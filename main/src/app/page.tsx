@@ -34,7 +34,7 @@ export default function Home() {
   };
   return (
     <div className="container">
-      <h1>Let's learn Next.js</h1>
+      <h1>Lets learn Next.js</h1>
       <Input
         handleSubmit={handleSubmit}
         newPost={newPost}
