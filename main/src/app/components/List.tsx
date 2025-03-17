@@ -4,7 +4,11 @@ interface Post {
   title: string;
 }
 
-export default function List({ posts }: Post) {
+interface ListProps {
+  posts: Post[];
+}
+
+export default function List({ posts }: ListProps) {
   return (
     <ul>
       {posts.map((post, index) => (
