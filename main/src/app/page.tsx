@@ -32,6 +32,10 @@ export default function Home() {
     setNewPosts([...newPosts, { title: newPost }]); // Lägger till newPost i newPosts
     setNewPost(""); // Tömmer newPost
   };
+
+  const handleDelete = async (index: number) => {
+    setPosts(posts.filter((_, i) => i !== index)); // Tar bort posten från posts
+  };
   return (
     <div className="container">
       <h1>Lets learn Next.js</h1>
@@ -41,7 +45,7 @@ export default function Home() {
         setNewPost={setNewPost}
       />{" "}
       {/*Skapar en input*/}
-      <List posts={[...posts, ...newPosts]} />{" "}
+      <List posts={[...posts, ...newPosts]} handleDelete={handleDelete} />{" "}
       {/*Skickar med posts till List "..." menas med alla*/}
     </div>
   );
