@@ -12,6 +12,8 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true); // Skapar en state för loading
   const [newPost, setNewPost] = useState<string>("");
   const [newPosts, setNewPosts] = useState<Post[]>([]);
+  const [editPost, setEditPost] = useState<string>("");
+  const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -36,6 +38,12 @@ export default function Home() {
   const handleDelete = async (index: number) => {
     setPosts(posts.filter((_, i) => i !== index)); // Tar bort posten från posts
   };
+
+  const handleEdit = (index: number) => {
+    setEditPost(posts[index].title);
+    setNewPost(posts[index].title);
+    setEditIndex(index);
+  };
   return (
     <div className="container">
       <h1>Lets learn Next.js</h1>
@@ -45,7 +53,11 @@ export default function Home() {
         setNewPost={setNewPost}
       />{" "}
       {/*Skapar en input*/}
-      <List posts={[...posts, ...newPosts]} handleDelete={handleDelete} />{" "}
+      <List
+        posts={[...posts, ...newPosts]}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />{" "}
       {/*Skickar med posts till List "..." menas med alla*/}
     </div>
   );
