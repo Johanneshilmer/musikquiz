@@ -11,8 +11,6 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]); // Skapar en state för posts
   const [loading, setLoading] = useState<boolean>(true); // Skapar en state för loading
   const [newPost, setNewPost] = useState<string>("");
-  const [newPosts, setNewPosts] = useState<Post[]>([]);
-  const [editPost, setEditPost] = useState<string>("");
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -30,17 +28,23 @@ export default function Home() {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Förhindrar att sidan laddas om när
-    setNewPosts([...newPosts, { title: newPost }]); // Lägger till newPost i newPosts
-    setNewPost(""); // Tömmer newPost
+    e.preventDefault();
+    if (editIndex !== null) {
+      const updatedPosts = [...posts];
+      updatedPosts[editIndex] = { title: newPost };
+      setPosts(updatedPosts);
+      setEditIndex(null);
+    } else {
+      setPosts([...posts, { title: newPost }]);
+    }
+    setNewPost("");
   };
 
-  const handleDelete = async (index: number) => {
-    setPosts(posts.filter((_, i) => i !== index)); // Tar bort posten från posts
+  const handleDelete = (index: number) => {
+    setPosts(posts.filter((_, i) => i !== index));
   };
 
   const handleEdit = (index: number) => {
-    setEditPost(posts[index].title);
     setNewPost(posts[index].title);
     setEditIndex(index);
   };
@@ -54,7 +58,7 @@ export default function Home() {
       />{" "}
       {/*Skapar en input*/}
       <List
-        posts={[...posts, ...newPosts]}
+        posts={posts}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
       />{" "}
