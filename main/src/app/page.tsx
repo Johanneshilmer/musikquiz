@@ -12,6 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true); // Skapar en state för loading
   const [newPost, setNewPost] = useState<string>("");
   const [editIndex, setEditIndex] = useState<number | null>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -34,6 +35,7 @@ export default function Home() {
       updatedPosts[editIndex] = { title: newPost };
       setPosts(updatedPosts);
       setEditIndex(null);
+      setIsEditing(false);
     } else {
       setPosts([...posts, { title: newPost }]);
     }
@@ -47,6 +49,7 @@ export default function Home() {
   const handleEdit = (index: number) => {
     setNewPost(posts[index].title);
     setEditIndex(index);
+    setIsEditing(true);
   };
   return (
     <div className="container">
@@ -58,6 +61,7 @@ export default function Home() {
       />{" "}
       {/*Skapar en input*/}
       <List
+        isEditing={isEditing}
         posts={posts}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
