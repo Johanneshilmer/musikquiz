@@ -58,15 +58,12 @@ export default function Home() {
         handleSubmit={handleSubmit}
         newPost={newPost}
         setNewPost={setNewPost}
-      />{" "}
-      {/*Skapar en input*/}
+      />
       <List
         isEditing={isEditing}
         posts={posts}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
-      />{" "}
-      {/*Skickar med posts till List "..." menas med alla*/}
     </div>
   );
 }
